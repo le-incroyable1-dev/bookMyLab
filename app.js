@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -18,6 +20,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 const routes = require('./routes/routes');
 app.use('/api', routes)
 
+
+/////////////////////////// connecting to the database =>
+
+const mongoose = require('mongoose')
+require('dotenv').config();
+
+const mongoString = process.env.DATABASE_URL
+console.log(mongoString)
+mongoose.connect(mongoString);
+
+const db = mongoose.connection
+
+db.on('error', (error) => {
+  console.log("------------ERROR------------\n")
+  console.log(error)
+})
+
+db.once('connected', () => {
+  console.log('Database Connected');
+})
+
+///////////////////////////////////////
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

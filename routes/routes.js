@@ -3,33 +3,28 @@ const user = require('../models/user');
 
 const router = express.Router()
 
+router.get('/login', async (req, res, next) => {
+    let data = req.body
+    let usr = data.username
+    let pwd = data.password
 
-///////////////////////////
-const mongoose = require('mongoose')
-require('dotenv').config();
+    let result = await user.findOne({
+        username : usr,
+        password : pwd
+    })
 
-const mongoString = process.env.DATABASE_URL
-mongoose.connect(mongoString);
-const db = mongoose.connection
+    if(!result) res.send("Not found").status(404);
+    else res.render('lab_status', {user : usr}).status(200);
 
-db.on('error', (error) => {
-  console.log("------------ERROR------------\n")
-  console.log(error)
 })
-
-db.once('connected', () => {
-  console.log('Database Connected');
-})
-///////////////////////////////////////
-
 
 
 router.get('/', (req, res) =>{
-    res.render('index', {title : 'Express'});
+    res.render('index', {title : 'Express'}).status(200);
 })
 
 router.get('/register', (req, res) =>{
-    res.render('register');
+    res.render('register').status(200);
 })
 
 router
