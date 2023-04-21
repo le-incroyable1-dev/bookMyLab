@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Lab</title>
+</head>
+<body>
+
+
+    <p>This form will be submitted using the POST method:</p>
+
+    <form action="/api/approve_lab" method="post">
+    <label for="lab">Lab:</label><br>
+    <input type="text" id="lab" name="lab"><br>
+    <label for="datetime">DateTime:</label><br>
+    <input type="datetime-local" id="datetime" name="datetime"><br><br>
+    <label for="name">Professor Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="pwd">Admin Password:</label><br>
+    <input type="text" id="pwd" name="pwd"><br>
+    <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>
