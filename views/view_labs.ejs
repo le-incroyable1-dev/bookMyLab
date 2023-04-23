@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Lab Status</title>
+</head>
+<body>
+    <table>
+    <% for(var i=0; i < data.length; i++) { %>
+        <tr>
+            <td>Lab : <%= data[i].lab %></td>
+            <td>Date : <%= data[i].datetime %></td>
+            <td>Linked Professor : <%= data[i].name %></td>
+            <td>Approval Status : <%= data[i].approved %></td>
+        </tr>
+    <% } %>
+    </table>
+</body>
+</html>
