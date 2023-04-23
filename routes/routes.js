@@ -10,6 +10,18 @@ router.get('/', (req, res) =>{
     res.status(200).render('index', {title : 'Express'});
 })
 
+// router.get('/view_labs', async (req, res, next) =>{
+//     try{
+//         const data = await lab.find();
+//         const labs = data;
+//         console.log(labs)
+//         res.status(200).render('view_labs', {data : labs});
+//     }
+//     catch(error){
+//         res.status(500).json({message: error.message})
+//     }
+// })
+
 router.get('/approve_lab', (req, res) =>{
     res.status(200).render('approve_lab');
 })
@@ -60,16 +72,31 @@ router.post('/lab_book', async (req, res, next) => {
 })
 
 router.get('/main', async (req, res, next) => {
-    let usr = req.body.username
-    let pwd = req.body.password
+    let usr = req.query.username
+    let pwd = req.query.password
+    
+    console.log(usr)
+    console.log(pwd)
 
     let result = await user.findOne({
-        username : usr,
-        password : pwd
+        "username" : usr,
+        "password" : pwd
     })
 
+    console.log(result);
+
     if(!result) res.status(400).send("Error");
-    else res.status(200).render('lab_view', {user : usr});
+    else{
+        try{
+            const data = await lab.find();
+            const labs = data;
+            console.log(labs)
+            res.status(200).render('view_labs', {data : labs});
+        }
+        catch(error){
+            res.status(500).json({message: error.message})
+        }
+    }
 })
 
 router.get('/login', (req, res, next) => {
