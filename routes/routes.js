@@ -122,4 +122,16 @@ router.post('/register', async (req, res) =>{
     }
 })
 
+router.get('/view_labs', async (req, res, next) => {
+    try{
+        const data = await lab.find();
+        const labs = data;
+        console.log(labs)
+        res.status(200).render('view_labs', {data : labs});
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
 module.exports = router;

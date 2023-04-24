@@ -4,14 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Lab</title>
+    <title>Book Room</title>
 </head>
+<style>
+    * {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+border: 1px solid #f1f1f1;
+margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+background-color: #000000;
+color: white;
+padding: 16px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+}
+
+.registerbtn:hover {
+opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+background-color: #f1f1f1;
+text-align: center;
+}
+</style>
 <body>
 
 
-    <p>This form will be submitted using the POST method:</p>
+    <!-- <p>This form will be submitted using the POST method:</p> -->
 
-    <form action="/api/lab_book" method="post">
+    <!-- <form action="/api/lab_book" method="post">
     <label for="lab">Lab:</label><br>
     <input type="text" id="lab" name="lab"><br>
     <label for="datetime">DateTime:</label><br>
@@ -19,7 +75,26 @@
     <label for="name">Professor Name:</label><br>
     <input type="text" id="name" name="name"><br>
     <input type="submit" value="Submit">
-    </form>
+    </form> -->
     
+    <!-- <p>This form will be submitted using the GET method:</p> -->
+    <form action="/api/register" method="post">
+        <div class="container">
+          <h1>Book Room</h1>
+          <p>Please fill this form to book a room</p>
+          <hr>
+      
+          <label for="email"><b>Room</b></label>
+          <input type="text" placeholder="Enter Room Number" name="email" id="email" required>
+          
+          <label for="datetime"><b>Date and Time:</b></label><br>
+          <input type="datetime-local" placeholder="Enter Date and Time" id="datetime" name="datetime"><br><br>
+
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter Name" name="name" id="name" required>
+      
+          <button type="submit" class="registerbtn">Book Room</button>
+        </div>
+      </form>
 </body>
 </html>
