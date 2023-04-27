@@ -7,7 +7,7 @@ const lab = require('../models/lab');
 const access = process.env.ADMIN_PWD
 
 router.get('/', (req, res) =>{
-    res.status(200).render('index', {title : 'Express'});
+    res.status(200).render('index', {title : 'Room Booking System'});
 })
 
 // router.get('/view_labs', async (req, res, next) =>{
@@ -29,6 +29,7 @@ router.get('/approve_lab', (req, res) =>{
 router.post('/approve_lab', async (req, res, next) =>{
 
     console.log("approving...")
+
     try {
         console.log(req.body.lab)
         console.log(req.body.name)
